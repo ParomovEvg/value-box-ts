@@ -1,4 +1,4 @@
-export interface ValueBox<ERROR, VALUE> {
+export interface ValueBox<ERROR, VALUE> extends PromiseLike<VALUE> {
   map<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE): ValueBox<ERROR, NEW_VALUE>;
   catch<NEW_VALUE>(
     fn: (e: ERROR) => NEW_VALUE

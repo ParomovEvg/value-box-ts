@@ -1,6 +1,13 @@
 import { ValueBox } from './ValueBox';
 import { ResultBox } from './ResultBox';
 
+class EmptyBoxError extends Error {
+  name = 'EmptyBoxError';
+  constructor() {
+    super('Called then on empty box');
+  }
+}
+
 export class EmptyBox<ERROR, VALUE> implements ValueBox<ERROR, VALUE> {
   static of<E = unknown, V = unknown>() {
     return new EmptyBox<E, V>();
@@ -44,5 +51,18 @@ export class EmptyBox<ERROR, VALUE> implements ValueBox<ERROR, VALUE> {
 
   map<NEW_VALUE>(_: (v: VALUE) => NEW_VALUE): ValueBox<ERROR, NEW_VALUE> {
     return EmptyBox.of<ERROR, NEW_VALUE>();
+  }
+
+  then<TResult1 = VALUE, TResult2 = never>(
+    fulfilled?:
+      | ((value: VALUE) => PromiseLike<TResult1> | TResult1)
+      | undefined
+      | null,
+    rejected?:
+      | ((reason: any) => PromiseLike<TResult2> | TResult2)
+      | undefined
+      | null
+  ): PromiseLike<TResult1 | TResult2> {
+    return Promise.reject(new EmptyBoxError()).then(fulfilled, rejected);
   }
 }

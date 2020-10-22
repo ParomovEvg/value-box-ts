@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6db2347c-5df2-420a-ba87-f3a0a7a4cef0" name="Default Changelist" comment="" />
+    <list default="true" id="6db2347c-5df2-420a-ba87-f3a0a7a4cef0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/EmptyBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/EmptyBox.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/ErrorBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/ErrorBox.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/ResultBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/ResultBox.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/ValueBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/ValueBox.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/blah.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/blah.test.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +29,9 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jEphtZ9njJBWMEaG4gCzywlWZQ" />
   <component name="ProjectViewState">
@@ -50,29 +69,49 @@
       <option name="presentableId" value="Default" />
       <updated>1603379227620</updated>
       <workItem from="1603379228720" duration="6340000" />
+      <workItem from="1603386185334" duration="5847000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1603382491674">
+    <state x="866" y="398" width="663" height="284" key="#Vim_Emulation" timestamp="1603399472223">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603382491674" />
+    <state x="866" y="398" width="663" height="284" key="#Vim_Emulation/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603399472223" />
+    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1603402314982">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603402314982" />
     <state x="748" y="298" key="FileChooserDialogImpl" timestamp="1603386182685">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="748" y="298" key="FileChooserDialogImpl/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603386182685" />
+    <state x="815" y="440" key="Github.ShareDialog" timestamp="1603386351021">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="815" y="440" key="Github.ShareDialog/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603386351021" />
     <state x="454" y="175" key="SettingsEditor" timestamp="1603383215523">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="454" y="175" key="SettingsEditor/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603383215523" />
-    <state x="519" y="141" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603385519369">
+    <state x="519" y="141" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603398828918">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="519" y="141" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603385519369" />
+    <state x="519" y="141" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603398828918" />
     <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1603383207335">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

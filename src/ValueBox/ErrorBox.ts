@@ -47,4 +47,17 @@ export class ErrorBox<ERROR, VALUE> implements ValueBox<ERROR, VALUE> {
   map<NEW_VALUE>(_: (v: VALUE) => NEW_VALUE): ValueBox<ERROR, NEW_VALUE> {
     return ErrorBox.of<ERROR, NEW_VALUE>(this.error);
   }
+
+  then<TResult1 = VALUE, TResult2 = never>(
+    fulfilled?:
+      | ((value: VALUE) => PromiseLike<TResult1> | TResult1)
+      | undefined
+      | null,
+    rejected?:
+      | ((reason: any) => PromiseLike<TResult2> | TResult2)
+      | undefined
+      | null
+  ): Promise<TResult1 | TResult2> {
+    return Promise.reject(this.error).then(fulfilled, rejected);
+  }
 }
