@@ -1,5 +1,3 @@
 describe('blah', () => {
-  it('empty', () => {
-
-  });
+  it('EmptyBox test', () => {});
 });
