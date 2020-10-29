@@ -1,6 +1,6 @@
-export { ErrorBox } from './ValueBox/ErrorBox';
-export { ResultBox } from './ValueBox/ResultBox';
-export { EmptyBox } from './ValueBox/EmptyBox';
-export { ValueBox } from './ValueBox/ValueBox';
-export { merge } from './merge/merge';
-export { mergeObject } from './merge/mergeObject';
+export { ErrorBox } from './ValueBox/implementation/ErrorBox';
+export { ResultBox } from './ValueBox/implementation/ResultBox';
+export { EmptyBox } from './ValueBox/implementation/EmptyBox';
+export { ValueBox } from './ValueBox/interfaces/ValueBox';
+export { MaybeBox } from './ValueBox/interfaces/MaybeBox';
+export { MayFailBox } from './ValueBox/interfaces/MayFailBox';

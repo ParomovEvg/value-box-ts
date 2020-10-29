@@ -1,4 +1,4 @@
-import { ValueBox } from './ValueBox';
+import { ValueBox } from './interfaces/ValueBox';
 
 export type InferBoxError<
   T extends ValueBox<unknown, unknown>
