@@ -1,19 +1,25 @@
 import { ResultBox } from '../ResultBox';
-import { MaybeBox, MayFailBox, ValueBox } from '../../..';
 import { TestError, TestValue, TestValue1 } from './TestValue';
+import { IsEmptyUseCase } from '../../useCases/IsEmptyUseCase';
+import { IsErrorUseCase } from '../../useCases/IsErrorUseCase';
+import { IsResultUseCase } from '../../useCases/IsResultUseCase';
+import {
+  MapMaybeBoxUseCase,
+  MapMayFailBoxUseCase,
+  MapValueBoxUseCase,
+} from '../../useCases/MapUseCase';
+import {
+  CatchMayFailBoxUseCase,
+  CatchValueBoxUseCase,
+} from '../../useCases/CatchUseCase';
 
 describe('ResultBox', () => {
-  const innerValue = TestValue.of();
-  const valueBox: ValueBox<TestError, TestValue> = ResultBox.of(innerValue);
-  const mayFailBox: MayFailBox<TestError, TestValue> = ResultBox.of(innerValue);
-  const maybeBox: MaybeBox<TestValue> = ResultBox.of(innerValue);
+  const innerValue = TestValue.get();
   const resultBox = ResultBox.of(innerValue);
 
-  describe('of static method', () => {
+  describe('get static method', () => {
     it('should return ResultBox instance', () => {
-      expect(valueBox).toBeInstanceOf(ResultBox);
-      expect(maybeBox).toBeInstanceOf(ResultBox);
-      expect(mayFailBox).toBeInstanceOf(ResultBox);
+      expect(resultBox).toBeInstanceOf(ResultBox);
     });
   });
 
@@ -24,40 +30,49 @@ describe('ResultBox', () => {
     });
   });
 
-  describe('isEmpty getter', () => {
+  describe('IsEmptyUseCase', () => {
+    const isEmptyUseCase: IsEmptyUseCase = resultBox;
     it('should return false', () => {
-      expect(resultBox.isEmpty).toEqual(false);
+      expect(isEmptyUseCase.isEmpty).toEqual(false);
     });
   });
-  describe('isError getter', () => {
+  describe('IsErrorUseCase', () => {
+    const isErrorUseCase: IsErrorUseCase = resultBox;
     it('should return false', () => {
-      expect(resultBox.isError).toEqual(false);
+      expect(isErrorUseCase.isError).toEqual(false);
     });
   });
   describe('isResult getter', () => {
-    it('should return false', () => {
-      expect(resultBox.isResult).toEqual(true);
+    const isResultUseCase: IsResultUseCase = resultBox;
+    it('should return true', () => {
+      expect(isResultUseCase.isResult).toEqual(true);
     });
   });
 
-  describe('map method', () => {
-    const callbackResult = TestValue1.of();
+  describe('map useCase', () => {
+    const callbackResult = TestValue1.get();
     const callback = jest.fn((_: TestValue) => callbackResult);
     beforeEach(() => jest.clearAllMocks());
 
-    it('should be in ValueBox, MayFailBox and MaybeBox', () => {
-      valueBox.map(callback);
-      maybeBox.map(callback);
-      mayFailBox.map(callback);
-    });
+    const mapValueBoxUseCase: MapValueBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+    const mapMayFailBoxUseCase: MapMayFailBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+    const mapMaybeBoxUseCase: MapMaybeBoxUseCase<TestValue> = resultBox;
 
     it('should return ResultBox ', () => {
-      const result = valueBox.map(callback);
-      expect(result).toBeInstanceOf(ResultBox);
+      const result1 = mapValueBoxUseCase.map(callback);
+      const result2 = mapMayFailBoxUseCase.map(callback);
+      expect(result1).toBeInstanceOf(ResultBox);
+      expect(result2).toBeInstanceOf(ResultBox);
     });
 
     it('should be called with innerValue', () => {
-      valueBox.map(callback);
+      mapMaybeBoxUseCase.map(callback);
       expect(callback).toBeCalledWith(innerValue);
     });
 
@@ -69,18 +84,24 @@ describe('ResultBox', () => {
 
   describe('catch method', () => {
     const callback = jest.fn() as (v: TestError) => TestValue;
-    it('should be in ValueBox and MayFailBox', () => {
-      valueBox.catch(callback);
-      mayFailBox.catch(callback);
-    });
+
+    const mapValueBoxUseCase: CatchValueBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+
+    const mapMayFailBoxUseCase: CatchMayFailBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
 
     it('should return this', () => {
-      const result = valueBox.catch(callback);
-      expect(result).toBe(valueBox);
+      const result = mapValueBoxUseCase.catch(callback);
+      expect(result).toBe(mapValueBoxUseCase);
     });
 
     it('should not call callback', () => {
-      valueBox.catch(callback);
+      mapMayFailBoxUseCase.catch(callback);
       expect(callback).not.toBeCalled();
     });
   });

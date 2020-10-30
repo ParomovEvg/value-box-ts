@@ -1,18 +1,21 @@
 import { EmptyBox } from '../EmptyBox';
-import { MaybeBox, ValueBox } from '../../..';
-import {TestError, TestValue, TestValue1} from './TestValue';
+import { TestError, TestValue, TestValue1 } from './TestValue';
+import { IsEmptyUseCase } from '../../useCases/IsEmptyUseCase';
+import { IsErrorUseCase } from '../../useCases/IsErrorUseCase';
+import { IsResultUseCase } from '../../useCases/IsResultUseCase';
+import {
+  MapMaybeBoxUseCase,
+  MapValueBoxUseCase,
+} from '../../useCases/MapUseCase';
+import { CatchValueBoxUseCase } from '../../useCases/CatchUseCase';
+import { DefaultMaybeBoxUseCase } from '../../useCases/DefaultUseCase';
+import { ResultBox } from '../ResultBox';
 
 describe('EmptyBox', () => {
-  const valueBox: ValueBox<TestError, TestValue> = EmptyBox.get();
-  const maybeBox: MaybeBox<TestValue> = EmptyBox.get();
-  const emptyBox = EmptyBox.get();
-
   describe('get static method', () => {
     it('should create EmptyBox instance', () => {
-      const valueBox: ValueBox<TestError, TestValue> = EmptyBox.get();
-      const maybeBox: MaybeBox<TestValue> = EmptyBox.get();
-      expect(valueBox).toBeInstanceOf(EmptyBox);
-      expect(maybeBox).toBeInstanceOf(EmptyBox);
+      const emptyBox = EmptyBox.get();
+      expect(emptyBox).toBeInstanceOf(EmptyBox);
     });
 
     it('should get single tone', () => {
@@ -22,56 +25,79 @@ describe('EmptyBox', () => {
     });
   });
 
-  describe('isEmpty getter', () => {
+  describe('isEmpty use case', () => {
+    const emptyBox: IsEmptyUseCase = EmptyBox.get();
     it('should return true', () => {
       expect(emptyBox.isEmpty).toEqual(true);
     });
   });
 
-  describe('isError getter', () => {
+  describe('isError use case', () => {
+    const emptyBox: IsErrorUseCase = EmptyBox.get();
     it('should return false', () => {
       expect(emptyBox.isError).toEqual(false);
     });
   });
 
-  describe('isResult getter', () => {
+  describe('isResult use case', () => {
+    const emptyBox: IsResultUseCase = EmptyBox.get();
     it('should return false', () => {
       expect(emptyBox.isResult).toEqual(false);
     });
   });
 
-  describe('map method', () => {
-    it('should be in ValueBox and MaybeBox', () => {
-      const callback = jest.fn() as (v: TestValue) => TestValue1;
-      valueBox.map(callback);
-      maybeBox.map(callback);
-    });
+  describe('map use case', () => {
+    beforeEach(() => jest.clearAllMocks());
+    const callback = jest.fn() as (v: TestValue) => TestValue1;
+    const mapMaybeBoxUseCase: MapMaybeBoxUseCase<TestValue> = EmptyBox.get();
+    const mapValueBoxUseCase: MapValueBoxUseCase<
+      TestError,
+      TestValue
+    > = EmptyBox.get();
+
     it('should return EmptyBox', () => {
-      const callback = jest.fn();
-      const res = valueBox.map(callback);
+      const res = mapValueBoxUseCase.map(callback);
       expect(res).toBeInstanceOf(EmptyBox);
     });
     it('should not call callback', () => {
-      const callback = jest.fn();
-      valueBox.map(callback);
+      mapMaybeBoxUseCase.map(callback);
       expect(callback).not.toBeCalled();
     });
   });
 
   describe('catch method', () => {
+    const catchValueBoxUseCase: CatchValueBoxUseCase<
+      TestError,
+      TestValue
+    > = EmptyBox.get();
     it('should be in ValueBox', () => {
       const callback = jest.fn() as (e: TestError) => TestValue;
-      valueBox.catch(callback);
+      catchValueBoxUseCase.catch(callback);
     });
     it('should return EmptyBox', () => {
       const callback = jest.fn() as (e: TestError) => TestValue;
-      const result = valueBox.catch(callback);
+      const result = catchValueBoxUseCase.catch(callback);
       expect(result).toBeInstanceOf(EmptyBox);
     });
     it('should not call callback', () => {
       const callback = jest.fn() as (e: TestError) => TestValue;
-      valueBox.catch(callback);
+      catchValueBoxUseCase.catch(callback);
       expect(callback).not.toBeCalled();
+    });
+  });
+
+  describe('default method', () => {
+    const defaultMaybeUseCase: DefaultMaybeBoxUseCase<TestValue> = EmptyBox.get();
+    const defaultValueBoxUseCase: DefaultMaybeBoxUseCase<TestValue> = EmptyBox.get();
+    const defaultValue = TestValue.get();
+
+    it('should return ResultBox ', () => {
+      const result = defaultValueBoxUseCase.default(defaultValue);
+      expect(result).toBeInstanceOf(ResultBox);
+    });
+    it('should return ResultBox with default value', () => {
+      const result = defaultMaybeUseCase.default(defaultValue);
+      expect(result.getValue()).toBe(defaultValue);
     });
   });
 });

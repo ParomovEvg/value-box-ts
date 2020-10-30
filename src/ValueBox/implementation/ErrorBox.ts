@@ -1,8 +1,8 @@
 import { ResultBox, ValueBox } from '../..';
 import { MayFailBox } from '../..';
 
-export class ErrorBox<ERROR, VALUE>
-  implements ValueBox<ERROR, VALUE>, MayFailBox<ERROR, VALUE> {
+export class ErrorBox<ERROR>
+  implements ValueBox<ERROR, never>, MayFailBox<ERROR, never> {
   constructor(private error: ERROR) {}
   static of<E>(error: E) {
     return new ErrorBox(error);
@@ -22,11 +22,15 @@ export class ErrorBox<ERROR, VALUE>
     return true;
   }
 
-  map<NEW_VALUE>(): ErrorBox<ERROR, NEW_VALUE> {
+  map(): ErrorBox<ERROR> {
     return this;
   }
 
-  catch<NEW_VALUE>(fn: (e: ERROR) => NEW_VALUE): ResultBox<never, NEW_VALUE> {
+  catch<NEW_VALUE>(fn: (e: ERROR) => NEW_VALUE): ResultBox<NEW_VALUE> {
     return ResultBox.of(fn(this.error));
+  }
+
+  default(): ErrorBox<ERROR> {
+    return this;
   }
 }

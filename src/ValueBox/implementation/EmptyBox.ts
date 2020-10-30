@@ -1,8 +1,7 @@
-import { ValueBox } from '../..';
+import { ResultBox, ValueBox } from '../..';
 import { MaybeBox } from '../..';
 
-export class EmptyBox<ERROR, VALUE>
-  implements ValueBox<ERROR, VALUE>, MaybeBox<VALUE> {
+export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   private static instance = new EmptyBox();
   static get() {
     return this.instance;
@@ -19,11 +18,15 @@ export class EmptyBox<ERROR, VALUE>
     return false;
   }
 
-  map<NEW_VALUE>(): EmptyBox<ERROR, NEW_VALUE> {
+  map(): EmptyBox {
     return EmptyBox.get();
   }
 
-  catch<NEW_VALUE>(): EmptyBox<ERROR, NEW_VALUE | VALUE> {
+  catch(): EmptyBox {
     return EmptyBox.get();
+  }
+
+  default<NEW_VALUE>(defaultValue: NEW_VALUE): ResultBox<NEW_VALUE> {
+    return ResultBox.of(defaultValue);
   }
 }

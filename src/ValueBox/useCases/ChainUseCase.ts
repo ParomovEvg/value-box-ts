@@ -1,4 +1,4 @@
-import {ValueBox} from "../ValueBox";
+import {ValueBox} from "../interfaces/ValueBox";
 
 export interface ChainUseCase<ERROR, VALUE> {
     chain<NEW_ERROR, NEW_VALUE>(

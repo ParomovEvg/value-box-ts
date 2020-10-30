@@ -155,7 +155,7 @@
 //   return boxes.reduce(
 //     (res: ValueBox<unknown, Array<unknown>>, v) =>
 //       v.chain(v => res.map(res => res.concat([v]))),
-//     ResultBox.of([])
+//     ResultBox.get([])
 //   );
 // }
 //
