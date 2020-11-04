@@ -14,33 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6db2347c-5df2-420a-ba87-f3a0a7a4cef0" name="Default Changelist" comment="added default method">
-      <change afterPath="$PROJECT_DIR$/src/functions/isEmptyBox/isEmptyBox.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/isEmptyBox/isEmptyBox.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/isErrorBox/isErrorBox.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/isErrorBox/isErrorBox.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/isResultBox/isResultBox.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/isResultBox/isResultBox.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/mergeArrayOfBoxes/mergeArrayOfBoxes.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/mergeArrayOfBoxes/mergeArrayOfBoxes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/mergeObjectOfBoxes/mergeObjectOfBoxes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/EmptyBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/EmptyBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/ErrorBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/ErrorBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/ResultBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/ResultBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/EmptyBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/EmptyBox.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ErrorBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ErrorBox.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ResultBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ResultBox.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/MayFailBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/MayFailBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/MaybeBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/MaybeBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/ValueBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/ValueBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/ChainUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/ChainUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsEmptyUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsErrorUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsResultUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/merge/merge.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/merge/mergeObject.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/CaseOfUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/CaseOfUseCase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/MapUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/MapUseCase.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +31,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jEphtZ9njJBWMEaG4gCzywlWZQ" />
@@ -172,6 +153,8 @@
       <workItem from="1604304695620" duration="1932000" />
       <workItem from="1604347834406" duration="1937000" />
       <workItem from="1604521506507" duration="1573000" />
+      <workItem from="1604526547062" duration="232000" />
+      <workItem from="1604528936465" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="added mergeObject">
       <created>1603408891477</created>
@@ -283,10 +266,10 @@
     </state>
     <state x="384" y="189" key="run.anything.popup/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604103064899" />
     <state x="512" y="241" key="run.anything.popup/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604269030699" />
-    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup" timestamp="1604522126223">
+    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup" timestamp="1604529257287">
       <screen x="0" y="0" width="1440" height="848" />
     </state>
-    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup/0.0.1440.848@0.0.1440.848" timestamp="1604522126223" />
+    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup/0.0.1440.848@0.0.1440.848" timestamp="1604529257287" />
     <state x="467" y="188" width="672" height="533" key="search.everywhere.popup/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604304238692" />
     <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273372574" />
   </component>

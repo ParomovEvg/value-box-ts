@@ -1,6 +1,6 @@
-import { MaybeBox } from '../interfaces/MaybeBox';
-import { MayFailBox } from '../interfaces/MayFailBox';
-import { ValueBox } from '../interfaces/ValueBox';
+import { MaybeBox } from '../..';
+import { MayFailBox } from '../..';
+import { ValueBox } from '../..';
 
 export interface MapMaybeBoxUseCase<VALUE> {
   map<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE): MaybeBox<NEW_VALUE>;
