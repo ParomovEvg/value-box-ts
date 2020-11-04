@@ -11,7 +11,7 @@ export interface CaseOfMaybeBoxUseCase<VALUE> {
     empty: () => DEFAULT_RESULT;
   }): RESULT | DEFAULT_RESULT;
 }
-export interface CaseOfMayFailUseCase<ERROR, VALUE> {
+export interface CaseOfMayFailBoxUseCase<ERROR, VALUE> {
   caseOf<RESULT, ERROR_RESULT>(obj: {
     result: (fn: VALUE) => RESULT;
     error: (fn: ERROR) => ERROR_RESULT;

@@ -1,4 +1,4 @@
-import { MayFailBox, ResultBox } from '../../index';
+import { MayFailBox, ResultBox } from '../..';
 
 export interface DefaultMaybeBoxUseCase<VALUE> {
   default<NEW_VALUE>(defaultValue: NEW_VALUE): ResultBox<NEW_VALUE | VALUE>;
