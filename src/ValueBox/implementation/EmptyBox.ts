@@ -7,17 +7,6 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
     return this.instance;
   }
 
-  get isEmpty() {
-    return true;
-  }
-
-  get isResult() {
-    return false;
-  }
-  get isError() {
-    return false;
-  }
-
   map(): EmptyBox {
     return EmptyBox.get();
   }
@@ -28,5 +17,8 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
 
   default<NEW_VALUE>(defaultValue: NEW_VALUE): ResultBox<NEW_VALUE> {
     return ResultBox.of(defaultValue);
+  }
+  chain() {
+    return this;
   }
 }

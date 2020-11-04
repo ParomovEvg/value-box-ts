@@ -1,8 +1,5 @@
 import { ResultBox } from '../ResultBox';
 import { TestError, TestValue, TestValue1 } from './TestValue';
-import { IsEmptyUseCase } from '../../useCases/IsEmptyUseCase';
-import { IsErrorUseCase } from '../../useCases/IsErrorUseCase';
-import { IsResultUseCase } from '../../useCases/IsResultUseCase';
 import {
   MapMaybeBoxUseCase,
   MapMayFailBoxUseCase,
@@ -12,6 +9,7 @@ import {
   CatchMayFailBoxUseCase,
   CatchValueBoxUseCase,
 } from '../../useCases/CatchUseCase';
+import { ChainValueBoxUseCase } from '../../useCases/ChainUseCase';
 
 describe('ResultBox', () => {
   const innerValue = TestValue.get();
@@ -27,25 +25,6 @@ describe('ResultBox', () => {
     it('should return inner value', () => {
       const result = resultBox.getValue();
       expect(result).toBe(innerValue);
-    });
-  });
-
-  describe('IsEmptyUseCase', () => {
-    const isEmptyUseCase: IsEmptyUseCase = resultBox;
-    it('should return false', () => {
-      expect(isEmptyUseCase.isEmpty).toEqual(false);
-    });
-  });
-  describe('IsErrorUseCase', () => {
-    const isErrorUseCase: IsErrorUseCase = resultBox;
-    it('should return false', () => {
-      expect(isErrorUseCase.isError).toEqual(false);
-    });
-  });
-  describe('isResult getter', () => {
-    const isResultUseCase: IsResultUseCase = resultBox;
-    it('should return true', () => {
-      expect(isResultUseCase.isResult).toEqual(true);
     });
   });
 
@@ -103,6 +82,25 @@ describe('ResultBox', () => {
     it('should not call callback', () => {
       mapMayFailBoxUseCase.catch(callback);
       expect(callback).not.toBeCalled();
+    });
+  });
+
+  describe('chain method', () => {
+    beforeEach(() => jest.clearAllMocks());
+    const callbackResult = ResultBox.of(TestValue1.get());
+    const callback = jest.fn(() => callbackResult);
+    const chainValueBoxUseCase: ChainValueBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+
+    it('should return callback result', () => {
+      const res = chainValueBoxUseCase.chain(callback);
+      expect(res).toBe(callbackResult);
+    });
+    it('should call callback with inner value', () => {
+      chainValueBoxUseCase.chain(callback);
+      expect(callback).toBeCalledWith(innerValue);
     });
   });
 });

@@ -11,16 +11,6 @@ export class ErrorBox<ERROR>
   getError() {
     return this.error;
   }
-  get isEmpty() {
-    return false;
-  }
-
-  get isResult() {
-    return false;
-  }
-  get isError() {
-    return true;
-  }
 
   map(): ErrorBox<ERROR> {
     return this;
@@ -31,6 +21,9 @@ export class ErrorBox<ERROR>
   }
 
   default(): ErrorBox<ERROR> {
+    return this;
+  }
+  chain() {
     return this;
   }
 }

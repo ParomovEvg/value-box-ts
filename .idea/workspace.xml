@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -10,32 +13,34 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6db2347c-5df2-420a-ba87-f3a0a7a4cef0" name="Default Changelist" comment="added catch method">
-      <change afterPath="$PROJECT_DIR$/src/ValueBox/useCases/CatchUseCase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ValueBox/useCases/DefaultUseCase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ValueBox/useCases/MapUseCase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/valueBox.spec.ts" afterDir="false" />
+    <list default="true" id="6db2347c-5df2-420a-ba87-f3a0a7a4cef0" name="Default Changelist" comment="added default method">
+      <change afterPath="$PROJECT_DIR$/src/functions/isEmptyBox/isEmptyBox.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/isEmptyBox/isEmptyBox.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/isErrorBox/isErrorBox.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/isErrorBox/isErrorBox.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/isResultBox/isResultBox.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/isResultBox/isResultBox.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/mergeArrayOfBoxes/mergeArrayOfBoxes.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/mergeArrayOfBoxes/mergeArrayOfBoxes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/mergeObjectOfBoxes/mergeObjectOfBoxes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/EmptyBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/EmptyBox.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/ErrorBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/ErrorBox.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/ResultBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/ResultBox.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/EmptyBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/EmptyBox.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ErrorBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ErrorBox.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ResultBox.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/ResultBox.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/TestValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/implementation/__test__/TestValue.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/MayFailBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/MayFailBox.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/MaybeBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/MaybeBox.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/ValueBox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/interfaces/ValueBox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/CaseOfUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/CaseOfUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/CatchUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/ChainUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/ChainUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/DefaultUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/IsEmptyUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/IsEmptyUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/IsErrorUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/IsErrorUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/IsResultUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/IsResultUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/MapUseCase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ValueBox/interfaces/useCases/OrDefaultUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/OrDefaultUseCase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/merge/merge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/merge/merge.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/ChainUseCase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValueBox/useCases/ChainUseCase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsEmptyUseCase.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsErrorUseCase.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValueBox/useCases/IsResultUseCase.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/merge/merge.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/merge/mergeObject.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +67,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ValueBox/useCases/__tests__" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
@@ -76,22 +82,48 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/ValueBox/implementation/__test__" />
-      <recent name="$PROJECT_DIR$/src/ValueBox/useCases/__tests__" />
-      <recent name="$PROJECT_DIR$/src/ValueBox/useCases" />
-      <recent name="$PROJECT_DIR$/src/ValueBox" />
-      <recent name="$PROJECT_DIR$/src/ValueBox/interfaces/useCases" />
-    </key>
-    <key name="es6.move.members.recent.items">
-      <recent name="$PROJECT_DIR$/src/ValueBox/implementation/__test__/TestValue.ts" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ValueBox/useCases/__tests__" />
       <recent name="$PROJECT_DIR$/src/ValueBox" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/ValueBox/implementation/__test__/TestValue.ts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/functions/mergeObject" />
+      <recent name="$PROJECT_DIR$/src/ValueBox/implementation/__test__" />
+      <recent name="$PROJECT_DIR$/src/ValueBox/useCases/__tests__" />
+      <recent name="$PROJECT_DIR$/src/ValueBox/useCases" />
+      <recent name="$PROJECT_DIR$/src/ValueBox" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.test:watch">
+    <configuration name="Unnamed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/test/chain.spec.ts" />
+      <test-names>
+        <test-name value="" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="mergeArrayOfBoxes" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/functions/mergeArrayOfBoxes/mergeArrayOfBoxes.spec.ts" />
+      <test-names>
+        <test-name value="mergeArrayOfBoxes" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -115,6 +147,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.test:watch" />
+        <item itemvalue="Jest.Unnamed" />
+        <item itemvalue="Jest.mergeArrayOfBoxes" />
         <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
@@ -130,7 +164,14 @@
       <workItem from="1603379228720" duration="6340000" />
       <workItem from="1603386185334" duration="9720000" />
       <workItem from="1603835821589" duration="8350000" />
-      <workItem from="1603925104973" duration="35619000" />
+      <workItem from="1603925104973" duration="41370000" />
+      <workItem from="1604095827611" duration="6502000" />
+      <workItem from="1604139157639" duration="597000" />
+      <workItem from="1604142841960" duration="643000" />
+      <workItem from="1604266555090" duration="10761000" />
+      <workItem from="1604304695620" duration="1932000" />
+      <workItem from="1604347834406" duration="1937000" />
+      <workItem from="1604521506507" duration="1573000" />
     </task>
     <task id="LOCAL-00001" summary="added mergeObject">
       <created>1603408891477</created>
@@ -146,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604008730998</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added default method">
+      <created>1604059602346</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604059602346</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,55 +215,57 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added mergeObject" />
     <MESSAGE value="added catch method" />
-    <option name="LAST_COMMIT_MESSAGE" value="added catch method" />
+    <MESSAGE value="added default method" />
+    <option name="LAST_COMMIT_MESSAGE" value="added default method" />
   </component>
   <component name="WindowStateProjectService">
     <state x="866" y="398" width="663" height="284" key="#Vim_Emulation" timestamp="1603399472223">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="866" y="398" width="663" height="284" key="#Vim_Emulation/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603399472223" />
-    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1604010743038">
+    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1604061635681">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="773" y="487" key="#com.intellij.ide.util.MemberChooser/0.0.1920.2030@0.0.1920.2030" timestamp="1603838642825" />
     <state x="580" y="203" key="#com.intellij.ide.util.MemberChooser/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1603963765470" />
-    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604010743038" />
+    <state x="773" y="259" key="#com.intellij.ide.util.MemberChooser/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604061635681" />
     <state x="698" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604059030097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604059030096" />
-    <state x="913" y="337" key="FileChooserDialogImpl" timestamp="1604008474036">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="685" y="265" key="FileChooserDialogImpl" timestamp="1604349770192">
+      <screen x="0" y="0" width="1440" height="848" />
     </state>
-    <state x="913" y="337" key="FileChooserDialogImpl/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604008474036" />
+    <state x="685" y="265" key="FileChooserDialogImpl/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604349770192" />
+    <state x="913" y="337" key="FileChooserDialogImpl/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604347993656" />
     <state x="815" y="440" key="Github.ShareDialog" timestamp="1603386351021">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="815" y="440" key="Github.ShareDialog/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1603386351021" />
-    <state width="1896" height="251" key="GridCell.Tab.0.bottom" timestamp="1604058924128">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1416" height="339" key="GridCell.Tab.0.bottom" timestamp="1604349771642">
+      <screen x="0" y="0" width="1440" height="848" />
     </state>
     <state width="1896" height="286" key="GridCell.Tab.0.bottom/0.0.1920.2030@0.0.1920.2030" timestamp="1603912159639" />
-    <state width="1416" height="251" key="GridCell.Tab.0.bottom/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604055414138" />
-    <state width="1896" height="251" key="GridCell.Tab.0.bottom/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604058924128" />
-    <state width="1896" height="251" key="GridCell.Tab.0.center" timestamp="1604058924127">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1416" height="339" key="GridCell.Tab.0.bottom/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604349771642" />
+    <state width="1896" height="250" key="GridCell.Tab.0.bottom/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273543178" />
+    <state width="1416" height="339" key="GridCell.Tab.0.center" timestamp="1604349771642">
+      <screen x="0" y="0" width="1440" height="848" />
     </state>
     <state width="1896" height="286" key="GridCell.Tab.0.center/0.0.1920.2030@0.0.1920.2030" timestamp="1603912159639" />
-    <state width="1416" height="251" key="GridCell.Tab.0.center/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604055414138" />
-    <state width="1896" height="251" key="GridCell.Tab.0.center/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604058924127" />
-    <state width="1896" height="251" key="GridCell.Tab.0.left" timestamp="1604058924127">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1416" height="339" key="GridCell.Tab.0.center/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604349771642" />
+    <state width="1896" height="250" key="GridCell.Tab.0.center/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273543178" />
+    <state width="1416" height="339" key="GridCell.Tab.0.left" timestamp="1604349771642">
+      <screen x="0" y="0" width="1440" height="848" />
     </state>
     <state width="1896" height="286" key="GridCell.Tab.0.left/0.0.1920.2030@0.0.1920.2030" timestamp="1603912159638" />
-    <state width="1416" height="251" key="GridCell.Tab.0.left/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604055414138" />
-    <state width="1896" height="251" key="GridCell.Tab.0.left/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604058924127" />
-    <state width="1896" height="251" key="GridCell.Tab.0.right" timestamp="1604058924127">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1416" height="339" key="GridCell.Tab.0.left/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604349771642" />
+    <state width="1896" height="250" key="GridCell.Tab.0.left/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273543178" />
+    <state width="1416" height="339" key="GridCell.Tab.0.right" timestamp="1604349771642">
+      <screen x="0" y="0" width="1440" height="848" />
     </state>
     <state width="1896" height="286" key="GridCell.Tab.0.right/0.0.1920.2030@0.0.1920.2030" timestamp="1603912159639" />
-    <state width="1416" height="251" key="GridCell.Tab.0.right/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604055414138" />
-    <state width="1896" height="251" key="GridCell.Tab.0.right/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604058924127" />
+    <state width="1416" height="339" key="GridCell.Tab.0.right/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604349771642" />
+    <state width="1896" height="250" key="GridCell.Tab.0.right/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273543178" />
     <state x="454" y="175" key="SettingsEditor" timestamp="1603383215523">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -228,9 +278,16 @@
       <screen x="233" y="1182" width="1440" height="900" />
     </state>
     <state x="233" y="1182" width="1440" height="737" key="dock-window-1/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604059566563" />
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1604010264176">
+    <state x="512" y="241" key="run.anything.popup" timestamp="1604269030699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604010264176" />
+    <state x="384" y="189" key="run.anything.popup/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604103064899" />
+    <state x="512" y="241" key="run.anything.popup/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604269030699" />
+    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup" timestamp="1604522126223">
+      <screen x="0" y="0" width="1440" height="848" />
+    </state>
+    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup/0.0.1440.848@0.0.1440.848" timestamp="1604522126223" />
+    <state x="467" y="188" width="672" height="533" key="search.everywhere.popup/233.1182.1440.900/0.0.1440.848@0.0.1440.848" timestamp="1604304238692" />
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/233.1182.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1604273372574" />
   </component>
 </project>

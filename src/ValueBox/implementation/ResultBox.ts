@@ -14,18 +14,6 @@ export class ResultBox<VALUE>
     return this.value;
   }
 
-  get isEmpty() {
-    return false;
-  }
-
-  get isResult() {
-    return true;
-  }
-
-  get isError() {
-    return false;
-  }
-
   map<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE): ResultBox<NEW_VALUE> {
     return ResultBox.of(fn(this.value));
   }
@@ -36,5 +24,9 @@ export class ResultBox<VALUE>
 
   default(): ResultBox<VALUE> {
     return this;
+  }
+
+  chain(fn: (v: VALUE) => any) {
+    return fn(this.value);
   }
 }

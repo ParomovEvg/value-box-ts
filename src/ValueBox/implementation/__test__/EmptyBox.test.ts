@@ -1,8 +1,5 @@
 import { EmptyBox } from '../EmptyBox';
-import { TestError, TestValue, TestValue1 } from './TestValue';
-import { IsEmptyUseCase } from '../../useCases/IsEmptyUseCase';
-import { IsErrorUseCase } from '../../useCases/IsErrorUseCase';
-import { IsResultUseCase } from '../../useCases/IsResultUseCase';
+import { TestError, TestError1, TestValue, TestValue1 } from './TestValue';
 import {
   MapMaybeBoxUseCase,
   MapValueBoxUseCase,
@@ -10,6 +7,8 @@ import {
 import { CatchValueBoxUseCase } from '../../useCases/CatchUseCase';
 import { DefaultMaybeBoxUseCase } from '../../useCases/DefaultUseCase';
 import { ResultBox } from '../ResultBox';
+import { ChainMaybeUseCase } from '../../useCases/ChainUseCase';
+import { ValueBox } from '../../..';
 
 describe('EmptyBox', () => {
   describe('get static method', () => {
@@ -22,27 +21,6 @@ describe('EmptyBox', () => {
       const emptyBox1 = EmptyBox.get();
       const emptyBox2 = EmptyBox.get();
       expect(emptyBox1).toBe(emptyBox2);
-    });
-  });
-
-  describe('isEmpty use case', () => {
-    const emptyBox: IsEmptyUseCase = EmptyBox.get();
-    it('should return true', () => {
-      expect(emptyBox.isEmpty).toEqual(true);
-    });
-  });
-
-  describe('isError use case', () => {
-    const emptyBox: IsErrorUseCase = EmptyBox.get();
-    it('should return false', () => {
-      expect(emptyBox.isError).toEqual(false);
-    });
-  });
-
-  describe('isResult use case', () => {
-    const emptyBox: IsResultUseCase = EmptyBox.get();
-    it('should return false', () => {
-      expect(emptyBox.isResult).toEqual(false);
     });
   });
 
@@ -98,6 +76,23 @@ describe('EmptyBox', () => {
     it('should return ResultBox with default value', () => {
       const result = defaultMaybeUseCase.default(defaultValue);
       expect(result.getValue()).toBe(defaultValue);
+    });
+  });
+
+  describe('chain use case', () => {
+    const callbackValueBox: () => ValueBox<TestError1, TestValue1> = () =>
+      ResultBox.of(TestValue1.get());
+
+    const chainMaybeUseCase: ChainMaybeUseCase<TestValue> = EmptyBox.get();
+
+    it('should return this', () => {
+      const res = chainMaybeUseCase.chain(callbackValueBox);
+      expect(res).toBe(chainMaybeUseCase);
+    });
+    it('should not call callback', () => {
+      const callback = jest.fn();
+      chainMaybeUseCase.chain(callback);
+      expect(callback).not.toBeCalled();
     });
   });
 });

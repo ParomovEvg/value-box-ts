@@ -1,14 +1,12 @@
 import { ErrorBox } from '../ErrorBox';
-import { ResultBox } from '../../..';
-import { TestError, TestValue, TestValue1 } from './TestValue';
-import { IsEmptyUseCase } from '../../useCases/IsEmptyUseCase';
-import { IsErrorUseCase } from '../../useCases/IsErrorUseCase';
-import { IsResultUseCase } from '../../useCases/IsResultUseCase';
+import { ResultBox, ValueBox } from '../../..';
+import { TestError, TestError1, TestValue, TestValue1 } from './TestValue';
 import { MapMayFailBoxUseCase } from '../../useCases/MapUseCase';
 import {
   CatchMayFailBoxUseCase,
   CatchValueBoxUseCase,
 } from '../../useCases/CatchUseCase';
+import { ChainMayFailUseCase } from '../../useCases/ChainUseCase';
 
 describe('ErrorBox', () => {
   const innerError = TestError.get();
@@ -24,24 +22,6 @@ describe('ErrorBox', () => {
     it('should return inner error', () => {
       const result = errorBox.getError();
       expect(result).toBe(innerError);
-    });
-  });
-  describe('isEmpty use case', () => {
-    const isEmptyUseCase: IsEmptyUseCase = errorBox;
-    it('should return false', () => {
-      expect(isEmptyUseCase.isEmpty).toEqual(false);
-    });
-  });
-  describe('isError use case', () => {
-    const isErrorUseCase: IsErrorUseCase = errorBox;
-    it('should return true', () => {
-      expect(isErrorUseCase.isError).toEqual(true);
-    });
-  });
-  describe('isResult use case', () => {
-    const isResultUseCase: IsResultUseCase = errorBox;
-    it('should return false', () => {
-      expect(isResultUseCase.isResult).toEqual(false);
     });
   });
 
@@ -95,6 +75,24 @@ describe('ErrorBox', () => {
     it('should return ResultBox with callback value', () => {
       const res = catchMayFailUseCase.catch(callback);
       expect(res.getValue()).toBe(callbackResultValue);
+    });
+  });
+
+  describe('chain method', () => {
+    const callbackValueBox: () => ValueBox<TestError1, TestValue1> = () =>
+      ResultBox.of(TestValue1.get());
+    const chainMayFailUseCase: ChainMayFailUseCase<
+      TestError,
+      TestValue
+    > = ErrorBox.of(TestError.get());
+    it('should return this', () => {
+      const res = chainMayFailUseCase.chain(callbackValueBox);
+      expect(res).toBe(chainMayFailUseCase);
+    });
+    it('should not call callback', () => {
+      const callback = jest.fn();
+      chainMayFailUseCase.chain(callback);
+      expect(callback).not.toBeCalled();
     });
   });
 });
