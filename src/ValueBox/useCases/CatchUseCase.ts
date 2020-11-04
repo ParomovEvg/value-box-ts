@@ -1,4 +1,4 @@
-import { MaybeBox, ResultBox } from '../../index';
+import { MaybeBox, ResultBox } from '../..';
 
 export interface CatchMayFailBoxUseCase<ERROR, VALUE> {
   catch<NEW_VALUE>(fn: (e: ERROR) => NEW_VALUE): ResultBox<NEW_VALUE | VALUE>;
