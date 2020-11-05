@@ -13,43 +13,67 @@ import {
 import { mergeArrayOfBoxes } from './mergeArrayOfBoxes';
 
 describe('mergeArrayOfBoxes', () => {
+  const testValuesArray = [TestValue1.get(), TestValue1.get()];
+  const testErrorsArray = [TestError1.get(), TestError1.get()];
+  const resultBoxArray = testValuesArray.map(v => ResultBox.of(v));
+  const errorBoxArray = testErrorsArray.map(v => ErrorBox.of(v));
+  const emptyBoxArray = [EmptyBox.get(), EmptyBox.get()];
+
+  const mixedArray: Array<ValueBox<TestError1, TestValue1>> = [
+    ...resultBoxArray,
+    ...errorBoxArray,
+    ...emptyBoxArray,
+  ];
+
+  const arrayWithErrors: Array<MayFailBox<TestError1, TestValue1>> = [
+    ...resultBoxArray,
+    ...errorBoxArray,
+  ];
+
+  const arrayWithEmptyBoxes: Array<MaybeBox<TestValue1>> = [
+    ...resultBoxArray,
+    ...emptyBoxArray,
+  ];
+
   test('types', () => {
-    const array1: Array<ValueBox<TestError1, TestValue1>> = [
-      ResultBox.of(TestValue1.get()),
-      ErrorBox.of(TestError1.get()),
-      EmptyBox.get(),
-    ];
     const res1: ValueBox<TestError1, Array<TestValue1>> = mergeArrayOfBoxes(
-      array1
+      mixedArray
     );
     expect(res1);
-    const array2: Array<MayFailBox<TestError1, TestValue1>> = [
-      ResultBox.of(TestValue1.get()),
-      ErrorBox.of(TestError1.get()),
-      ResultBox.of(TestValue1.get()),
-      ErrorBox.of(TestError1.get()),
-    ];
     const res2: MayFailBox<TestError1, TestValue1[]> = mergeArrayOfBoxes(
-      array2
+      arrayWithErrors
     );
     expect(res2);
-    const array3: Array<MaybeBox<TestValue1>> = [
-      ResultBox.of(TestValue1.get()),
-      ResultBox.of(TestValue1.get()),
-      EmptyBox.get(),
-    ];
-    const res3: ResultBox<TestValue1[]> = mergeArrayOfBoxes(array3);
+    const res3: ResultBox<TestValue1[]> = mergeArrayOfBoxes(
+      arrayWithEmptyBoxes
+    );
     expect(res3);
   });
 
-
   it('should return result box if called with result boxes array', () => {
-    const resultsArray: MaybeBox<TestValue1>[] = [
-      ResultBox.of(TestValue1.get()),
-      ResultBox.of(TestValue1.get()),
-      ResultBox.of(TestValue1.get()),
-    ];
-    const res = mergeArrayOfBoxes(resultsArray);
+    const res = mergeArrayOfBoxes(resultBoxArray);
     expect(res).toBeInstanceOf(ResultBox);
   });
+  it('should return result box, with inner values array', () => {
+    const res = mergeArrayOfBoxes(resultBoxArray);
+    expect(res.getValue()).toEqual(testValuesArray);
+  });
+  it('should return result box if called with result and empty boxes array', () => {
+    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes)
+    expect(res).toBeInstanceOf(ResultBox)
+  })
+  it('should return result box, with inner result boxes values', () => {
+    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes)
+    expect(res.getValue()).toEqual(testValuesArray)
+  })
+  it('should return error box if called with error boxes array', () => {
+    const res = mergeArrayOfBoxes(arrayWithErrors)
+    expect(res).toBeInstanceOf(ErrorBox)
+  })
+  it('should return error box with first error', () => {
+    const res = mergeArrayOfBoxes(arrayWithErrors)
+    const callback = jest.fn((_:TestError1) => {})
+    res.catch(callback)
+    expect(callback).toBeCalledWith(testErrorsArray[0])
+  })
 });
