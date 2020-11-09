@@ -27,7 +27,7 @@ describe('value box', () => {
   });
 
   test('default sequence', () => {
-    const result = callSequence(EmptyBox.get());
+    const result = callSequence(EmptyBox.of());
     expect(result).toBe(defaultValue);
   });
 });

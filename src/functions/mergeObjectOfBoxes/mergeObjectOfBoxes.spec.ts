@@ -17,7 +17,7 @@ describe('mergeObjectOfBoxes', () => {
     error1: ErrorBox.of(error1),
     error2: ErrorBox.of(error2),
   };
-  const emptyBoxes = { empty1: EmptyBox.get(), empty2: EmptyBox.get() };
+  const emptyBoxes = { empty1: EmptyBox.of(), empty2: EmptyBox.of() };
 
   it('should return ResultBox if called with object of ResultBox', () => {
     const res = mergeObjectOfBoxes(resultBoxes);

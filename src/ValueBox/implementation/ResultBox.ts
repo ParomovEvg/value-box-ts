@@ -1,6 +1,7 @@
 import { ValueBox } from '../..';
 import { MayFailBox } from '../..';
 import { MaybeBox } from '../..';
+import { EmptyBox } from './EmptyBox';
 
 export class ResultBox<VALUE>
   implements ValueBox<never, VALUE>, MayFailBox<never, VALUE>, MaybeBox<VALUE> {
@@ -16,6 +17,15 @@ export class ResultBox<VALUE>
 
   map<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE): ResultBox<NEW_VALUE> {
     return ResultBox.of(fn(this.value));
+  }
+
+  smartMap<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE | undefined | null): EmptyBox | ResultBox<NEW_VALUE> {
+    const result = fn(this.value)
+
+    if(result === undefined || result === null) {
+      return EmptyBox.of()
+    }
+    return ResultBox.of(result)
   }
 
   catch(): ResultBox<VALUE> {

@@ -10,6 +10,8 @@ import {
   CatchValueBoxUseCase,
 } from '../../useCases/CatchUseCase';
 import { ChainValueBoxUseCase } from '../../useCases/ChainUseCase';
+import { SmartMapMaybeBoxUseCase, SmartMapMayFailBoxUseCase, SmartMapValueBoxUseCase } from '../../useCases/SmartMapUseCase';
+import { EmptyBox } from '../../..';
 
 describe('ResultBox', () => {
   const innerValue = TestValue.get();
@@ -60,6 +62,61 @@ describe('ResultBox', () => {
       expect(result.getValue()).toBe(callbackResult);
     });
   });
+
+  
+  describe('smartMap use case', () => {
+
+    const callbackResult = TestValue1.get();
+    const callback = jest.fn((_: TestValue) => callbackResult);
+    beforeEach(() => jest.clearAllMocks());
+
+    const smartMapValueBoxUseCase: SmartMapValueBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+    
+    const smartMapMaybeBoxUseCase: SmartMapMaybeBoxUseCase<
+    TestValue
+    > = resultBox;
+    
+    const smartMapMayFailBoxUseCase: SmartMapMayFailBoxUseCase<
+      TestError,
+      TestValue
+    > = resultBox;
+
+    it('should return ResultBox', () => {
+      const result1 = smartMapValueBoxUseCase.smartMap(callback);
+      const result2 = smartMapMaybeBoxUseCase.smartMap(callback);
+      expect(result1).toBeInstanceOf(ResultBox);
+      expect(result2).toBeInstanceOf(ResultBox);
+    });
+
+    it('should be called with innerValue', () => {
+      smartMapMayFailBoxUseCase.smartMap(callback);
+      expect(callback).toBeCalledWith(innerValue);
+    });
+
+    it('should be return ResultBox with callbackResult', () => {
+      const result = resultBox.map(callback);
+      expect(result.getValue()).toBe(callbackResult);
+    });
+
+    it('should be return EmptyBox with undefined callback result', () => {
+      const callback1 = jest.fn((_: TestValue) => undefined);
+      const result = resultBox.smartMap(callback1);
+
+      expect(result).toBeInstanceOf(EmptyBox);
+    });
+
+    it('should be return EmptyBox with null callback result', () => {
+      const callback1 = jest.fn((_: TestValue) => null);
+      const result = resultBox.smartMap(callback1);
+
+      expect(result).toBeInstanceOf(EmptyBox);
+    });
+
+  });
+
 
   describe('catch method', () => {
     const callback = jest.fn() as (v: TestError) => TestValue;

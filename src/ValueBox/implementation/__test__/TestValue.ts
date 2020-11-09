@@ -53,7 +53,7 @@ export class TestError2 {
 export const getBoxes = () => ({
   result: ResultBox.of(TestValue.get()),
   error: ErrorBox.of(TestError.get()),
-  empty: EmptyBox.get(),
+  empty: EmptyBox.of(),
 });
 export type ValueBoxesKeys = keyof ReturnType<typeof getBoxes>;
 export const getValueBoxes = () => {

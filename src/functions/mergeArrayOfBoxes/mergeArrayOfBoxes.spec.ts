@@ -17,7 +17,7 @@ describe('mergeArrayOfBoxes', () => {
   const testErrorsArray = [TestError1.get(), TestError1.get()];
   const resultBoxArray = testValuesArray.map(v => ResultBox.of(v));
   const errorBoxArray = testErrorsArray.map(v => ErrorBox.of(v));
-  const emptyBoxArray = [EmptyBox.get(), EmptyBox.get()];
+  const emptyBoxArray = [EmptyBox.of(), EmptyBox.of()];
 
   const mixedArray: Array<ValueBox<TestError1, TestValue1>> = [
     ...resultBoxArray,
