@@ -9,6 +9,7 @@ import { DefaultMaybeBoxUseCase } from '../../useCases/DefaultUseCase';
 import { ResultBox } from '../ResultBox';
 import { ChainMaybeUseCase } from '../../useCases/ChainUseCase';
 import { ValueBox } from '../../..';
+import { SmartMapMaybeBoxUseCase } from '../../useCases/SmartMapUseCase';
 
 describe('EmptyBox', () => {
   describe('get static method', () => {
@@ -89,9 +90,28 @@ describe('EmptyBox', () => {
       const res = chainMaybeUseCase.chain(callbackValueBox);
       expect(res).toBe(chainMaybeUseCase);
     });
+
     it('should not call callback', () => {
       const callback = jest.fn();
       chainMaybeUseCase.chain(callback);
+      expect(callback).not.toBeCalled();
+    });
+  });
+
+  describe('smartMap method', () => {
+    const callbackValueBox: () => ValueBox<TestError1, TestValue1> = () =>
+      ResultBox.of(TestValue1.get());
+
+    const smartMapMaybeBoxUseCase: SmartMapMaybeBoxUseCase<TestValue> = EmptyBox.of();
+
+    it('should return this', () => {
+      const res = smartMapMaybeBoxUseCase.smartMap(callbackValueBox);
+      expect(res).toBe(smartMapMaybeBoxUseCase);
+    });
+
+    it('should not call callback', () => {
+      const callback = jest.fn();
+      smartMapMaybeBoxUseCase.smartMap(callback);
       expect(callback).not.toBeCalled();
     });
   });
