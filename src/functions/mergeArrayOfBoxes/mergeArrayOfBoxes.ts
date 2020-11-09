@@ -14,7 +14,7 @@ import {
 } from '../..';
 
 export function mergeArrayOfBoxes<T extends UnknownMaybeBox>(
-    boxes: T[]
+  boxes: T[]
 ): ResultBox<InferBoxValue<T>[]>;
 export function mergeArrayOfBoxes<T extends UnknownMayFailBox>(
   boxes: T[]

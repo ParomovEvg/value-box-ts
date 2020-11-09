@@ -10,7 +10,7 @@ export interface MaybeBox<VALUE> {
     fn: (v: VALUE) => MayFailBox<NEW_ERROR, NEW_VALUE>
   ): ValueBox<NEW_ERROR, NEW_VALUE>;
   chain<NEW_ERROR, NEW_VALUE>(
-      fn: (v: VALUE) => ValueBox<NEW_ERROR, NEW_VALUE>
+    fn: (v: VALUE) => ValueBox<NEW_ERROR, NEW_VALUE>
   ): ValueBox<NEW_ERROR, NEW_VALUE>;
 
   smartMap<NEW_VALUE>(

@@ -10,7 +10,11 @@ import {
   CatchValueBoxUseCase,
 } from '../../useCases/CatchUseCase';
 import { ChainValueBoxUseCase } from '../../useCases/ChainUseCase';
-import { SmartMapMaybeBoxUseCase, SmartMapMayFailBoxUseCase, SmartMapValueBoxUseCase } from '../../useCases/SmartMapUseCase';
+import {
+  SmartMapMaybeBoxUseCase,
+  SmartMapMayFailBoxUseCase,
+  SmartMapValueBoxUseCase,
+} from '../../useCases/SmartMapUseCase';
 import { EmptyBox } from '../../..';
 
 describe('ResultBox', () => {
@@ -63,9 +67,7 @@ describe('ResultBox', () => {
     });
   });
 
-  
   describe('smartMap use case', () => {
-
     const callbackResult = TestValue1.get();
     const callback = jest.fn((_: TestValue) => callbackResult);
     beforeEach(() => jest.clearAllMocks());
@@ -74,11 +76,9 @@ describe('ResultBox', () => {
       TestError,
       TestValue
     > = resultBox;
-    
-    const smartMapMaybeBoxUseCase: SmartMapMaybeBoxUseCase<
-    TestValue
-    > = resultBox;
-    
+
+    const smartMapMaybeBoxUseCase: SmartMapMaybeBoxUseCase<TestValue> = resultBox;
+
     const smartMapMayFailBoxUseCase: SmartMapMayFailBoxUseCase<
       TestError,
       TestValue
@@ -114,9 +114,7 @@ describe('ResultBox', () => {
 
       expect(result).toBeInstanceOf(EmptyBox);
     });
-
   });
-
 
   describe('catch method', () => {
     const callback = jest.fn() as (v: TestError) => TestValue;

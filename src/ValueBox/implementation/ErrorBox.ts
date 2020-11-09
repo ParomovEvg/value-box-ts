@@ -17,7 +17,7 @@ export class ErrorBox<ERROR>
   }
 
   smartMap(): ErrorBox<ERROR> {
-    return this; 
+    return this;
   }
 
   catch<NEW_VALUE>(fn: (e: ERROR) => NEW_VALUE): ResultBox<NEW_VALUE> {

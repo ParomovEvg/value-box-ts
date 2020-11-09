@@ -34,7 +34,7 @@ describe('mergeObjectOfBoxes', () => {
   });
   it('should return ErrorBox with first inner error', () => {
     const res = mergeObjectOfBoxes({
-      error1:ErrorBox.of(error1),
+      error1: ErrorBox.of(error1),
       ...resultBoxes,
     }) as ErrorBox<TestError1 | TestError2>;
     expect(res.getError()).toBe(error1);

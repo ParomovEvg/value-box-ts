@@ -7,7 +7,7 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   static of() {
     return EmptyBox.instance;
   }
- 
+
   map(): EmptyBox {
     return EmptyBox.of();
   }

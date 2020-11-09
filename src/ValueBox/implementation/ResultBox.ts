@@ -19,13 +19,15 @@ export class ResultBox<VALUE>
     return ResultBox.of(fn(this.value));
   }
 
-  smartMap<NEW_VALUE>(fn: (v: VALUE) => NEW_VALUE | undefined | null): EmptyBox | ResultBox<NEW_VALUE> {
-    const result = fn(this.value)
+  smartMap<NEW_VALUE>(
+    fn: (v: VALUE) => NEW_VALUE | undefined | null
+  ): EmptyBox | ResultBox<NEW_VALUE> {
+    const result = fn(this.value);
 
-    if(result === undefined || result === null) {
-      return EmptyBox.of()
+    if (result === undefined || result === null) {
+      return EmptyBox.of();
     }
-    return ResultBox.of(result)
+    return ResultBox.of(result);
   }
 
   catch(): ResultBox<VALUE> {
