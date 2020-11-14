@@ -25,7 +25,7 @@ export class ResultBox<VALUE>
     const result = fn(this.value);
 
     if (result === undefined || result === null) {
-      return EmptyBox.of();
+      return EmptyBox.get();
     }
     return ResultBox.of(result);
   }
