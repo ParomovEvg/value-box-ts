@@ -1,3 +1,4 @@
+import { SmartMapMayFailBoxUseCase } from './../../useCases/SmartMapUseCase';
 import { ErrorBox } from '../ErrorBox';
 import { ResultBox, ValueBox } from '../../..';
 import { TestError, TestError1, TestValue, TestValue1 } from './TestValue';
@@ -85,13 +86,35 @@ describe('ErrorBox', () => {
       TestError,
       TestValue
     > = ErrorBox.of(TestError.get());
+
     it('should return this', () => {
       const res = chainMayFailUseCase.chain(callbackValueBox);
       expect(res).toBe(chainMayFailUseCase);
     });
+
     it('should not call callback', () => {
       const callback = jest.fn();
       chainMayFailUseCase.chain(callback);
+      expect(callback).not.toBeCalled();
+    });
+  });
+
+  describe('smartMap method', () => {
+    const callbackValueBox: () => ValueBox<TestError1, TestValue1> = () =>
+      ResultBox.of(TestValue1.get());
+    const smartMapMayFailBoxUseCase: SmartMapMayFailBoxUseCase<
+      TestError,
+      TestValue
+    > = ErrorBox.of(TestError.get());
+
+    it('should return this', () => {
+      const res = smartMapMayFailBoxUseCase.smartMap(callbackValueBox);
+      expect(res).toBe(smartMapMayFailBoxUseCase);
+    });
+
+    it('should not call callback', () => {
+      const callback = jest.fn();
+      smartMapMayFailBoxUseCase.smartMap(callback);
       expect(callback).not.toBeCalled();
     });
   });

@@ -59,21 +59,21 @@ describe('mergeArrayOfBoxes', () => {
     expect(res.getValue()).toEqual(testValuesArray);
   });
   it('should return result box if called with result and empty boxes array', () => {
-    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes)
-    expect(res).toBeInstanceOf(ResultBox)
-  })
+    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes);
+    expect(res).toBeInstanceOf(ResultBox);
+  });
   it('should return result box, with inner result boxes values', () => {
-    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes)
-    expect(res.getValue()).toEqual(testValuesArray)
-  })
+    const res = mergeArrayOfBoxes(arrayWithEmptyBoxes);
+    expect(res.getValue()).toEqual(testValuesArray);
+  });
   it('should return error box if called with error boxes array', () => {
-    const res = mergeArrayOfBoxes(arrayWithErrors)
-    expect(res).toBeInstanceOf(ErrorBox)
-  })
+    const res = mergeArrayOfBoxes(arrayWithErrors);
+    expect(res).toBeInstanceOf(ErrorBox);
+  });
   it('should return error box with first error', () => {
-    const res = mergeArrayOfBoxes(arrayWithErrors)
-    const callback = jest.fn((_:TestError1) => {})
-    res.catch(callback)
-    expect(callback).toBeCalledWith(testErrorsArray[0])
-  })
+    const res = mergeArrayOfBoxes(arrayWithErrors);
+    const callback = jest.fn((_: TestError1) => {});
+    res.catch(callback);
+    expect(callback).toBeCalledWith(testErrorsArray[0]);
+  });
 });

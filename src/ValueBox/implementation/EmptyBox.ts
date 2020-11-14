@@ -3,8 +3,9 @@ import { MaybeBox } from '../..';
 
 export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   private static instance = new EmptyBox();
+
   static get() {
-    return this.instance;
+    return EmptyBox.instance;
   }
 
   map(): EmptyBox {
@@ -18,7 +19,12 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   default<NEW_VALUE>(defaultValue: NEW_VALUE): ResultBox<NEW_VALUE> {
     return ResultBox.of(defaultValue);
   }
+
   chain() {
+    return this;
+  }
+
+  smartMap(): EmptyBox {
     return this;
   }
 }
