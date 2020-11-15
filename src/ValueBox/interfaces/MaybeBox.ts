@@ -20,4 +20,7 @@ export interface MaybeBox<VALUE> {
     result: (fn: VALUE) => RESULT;
     empty: () => DEFAULT_RESULT;
   }): RESULT | DEFAULT_RESULT;
+
+  onResult(fn: (v: VALUE) => void): MaybeBox<VALUE>;
+  onEmpty(fn: () => void): MaybeBox<VALUE>;
 }

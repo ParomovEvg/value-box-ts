@@ -1,4 +1,4 @@
-import { SmartMapMayFailBoxUseCase } from './../../useCases/SmartMapUseCase';
+import { SmartMapMayFailBoxUseCase } from '../../useCases/SmartMapUseCase';
 import { ErrorBox } from '../ErrorBox';
 import { ResultBox, ValueBox } from '../../..';
 import { TestError, TestError1, TestValue, TestValue1 } from './TestValue';
@@ -151,6 +151,46 @@ describe('ErrorBox', () => {
       });
       expect(empty).not.toHaveBeenCalled();
       expect(result).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('onResult method', () => {
+    const callback = jest.fn();
+    const innerError = TestError.get();
+    const value: ValueBox<TestError, any> = ErrorBox.of(innerError);
+    it('should not call callback', () => {
+      value.onResult(callback);
+      expect(callback).not.toBeCalled();
+    });
+    it('should return itself ', () => {
+      const res = value.onResult(callback);
+      expect(res).toBe(value);
+    });
+  });
+  describe('onEmpty method', () => {
+    const callback = jest.fn();
+    const innerError = TestError.get();
+    const value: ValueBox<TestError, any> = ErrorBox.of(innerError);
+    it('should not call callback', () => {
+      value.onEmpty(callback);
+      expect(callback).not.toBeCalled();
+    });
+    it('should return itself ', () => {
+      const res = value.onEmpty(callback);
+      expect(res).toBe(value);
+    });
+  });
+  describe('onError method', () => {
+    const callback = jest.fn();
+    const innerError = TestError.get();
+    const value: ValueBox<TestError, any> = ErrorBox.of(innerError);
+    it('should call callback with innerError', () => {
+      value.onError(callback);
+      expect(callback).toBeCalledWith(innerError);
+    });
+    it('should return itself ', () => {
+      const res = value.onError(callback);
+      expect(res).toBe(value);
     });
   });
 });

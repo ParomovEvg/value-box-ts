@@ -31,4 +31,17 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   caseOf<DEFAULT_RESULT>(obj: { empty: () => DEFAULT_RESULT }): DEFAULT_RESULT {
     return obj.empty();
   }
+
+  onEmpty(fn: () => void): EmptyBox {
+    fn();
+    return this;
+  }
+
+  onError(): EmptyBox {
+    return this;
+  }
+
+  onResult(): EmptyBox {
+    return this;
+  }
 }

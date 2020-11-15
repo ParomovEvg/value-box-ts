@@ -45,4 +45,17 @@ export class ResultBox<VALUE>
   caseOf<RESULT>(obj: { result: (fn: VALUE) => RESULT }): RESULT {
     return obj.result(this.value);
   }
+
+  onEmpty(): ResultBox<VALUE> {
+    return this;
+  }
+
+  onError(): ResultBox<VALUE> {
+    return this;
+  }
+
+  onResult(fn: (v: VALUE) => void): ResultBox<VALUE> {
+    fn(this.value);
+    return this;
+  }
 }

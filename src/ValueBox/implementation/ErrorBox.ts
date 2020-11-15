@@ -36,4 +36,17 @@ export class ErrorBox<ERROR>
   }): ERROR_RESULT {
     return obj.error(this.error);
   }
+
+  onEmpty(): ErrorBox<ERROR> {
+    return this;
+  }
+
+  onError(fn: (e: ERROR) => void): ErrorBox<ERROR> {
+    fn(this.error);
+    return this;
+  }
+
+  onResult(): ErrorBox<ERROR> {
+    return this;
+  }
 }

@@ -28,4 +28,8 @@ export interface ValueBox<ERROR, VALUE> {
     error: (fn: ERROR) => ERROR_RESULT;
     empty: () => DEFAULT_RESULT;
   }): RESULT | ERROR_RESULT | DEFAULT_RESULT;
+
+  onResult(fn: (v: VALUE) => void): ValueBox<ERROR, VALUE>;
+  onEmpty(fn: () => void): ValueBox<ERROR, VALUE>;
+  onError(fn: (e: ERROR) => void): ValueBox<ERROR, VALUE>;
 }

@@ -193,4 +193,46 @@ describe('ResultBox', () => {
       expect(error).not.toHaveBeenCalled();
     });
   });
+
+  describe('onResult method', () => {
+    const callback = jest.fn();
+    const innerValue = TestValue.get();
+    const value: ValueBox<any, TestValue> = ResultBox.of(innerValue);
+    it('should call callback with innerValue', () => {
+      value.onResult(callback);
+      expect(callback).toBeCalledWith(innerValue);
+    });
+    it('should return itself ', () => {
+      const res = value.onResult(callback);
+      expect(res).toBe(value);
+    });
+  });
+
+  describe('onEmpty method', () => {
+    const callback = jest.fn();
+    const innerValue = TestValue.get();
+    const value: ValueBox<any, TestValue> = ResultBox.of(innerValue);
+    it('should not call callback', () => {
+      value.onEmpty(callback);
+      expect(callback).not.toBeCalled();
+    });
+    it('should return itself ', () => {
+      const res = value.onEmpty(callback);
+      expect(res).toBe(value);
+    });
+  });
+
+  describe('onError method', () => {
+    const callback = jest.fn();
+    const innerValue = TestValue.get();
+    const value: ValueBox<any, TestValue> = ResultBox.of(innerValue);
+    it('should not call callback', () => {
+      value.onError(callback);
+      expect(callback).not.toBeCalled();
+    });
+    it('should return itself ', () => {
+      const res = value.onError(callback);
+      expect(res).toBe(value);
+    });
+  });
 });
