@@ -115,4 +115,30 @@ describe('EmptyBox', () => {
       expect(callback).not.toBeCalled();
     });
   });
+
+  describe('caseOf method', () => {
+    beforeEach(() => jest.clearAllMocks());
+    const emptyCallbackResult = 'emptyCallbackResult';
+    const empty = jest.fn(() => emptyCallbackResult);
+    const result = jest.fn();
+    const error = jest.fn();
+    const emptyBox: ValueBox<any, any> = EmptyBox.get();
+    it('should return empty callback return value', () => {
+      const res = emptyBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(res).toBe(emptyCallbackResult);
+    });
+    it('should not call another callback', () => {
+      emptyBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(error).not.toHaveBeenCalled();
+      expect(result).not.toHaveBeenCalled();
+    });
+  });
 });

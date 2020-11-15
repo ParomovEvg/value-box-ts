@@ -15,7 +15,7 @@ import {
   SmartMapMayFailBoxUseCase,
   SmartMapValueBoxUseCase,
 } from '../../useCases/SmartMapUseCase';
-import { EmptyBox } from '../../..';
+import { EmptyBox, ValueBox } from '../../..';
 
 describe('ResultBox', () => {
   const innerValue = TestValue.get();
@@ -156,6 +156,41 @@ describe('ResultBox', () => {
     it('should call callback with inner value', () => {
       chainValueBoxUseCase.chain(callback);
       expect(callback).toBeCalledWith(innerValue);
+    });
+  });
+
+  describe('caseOf method', () => {
+    beforeEach(() => jest.clearAllMocks());
+    const resultCallbackResult = 'resultCallbackResult';
+    const innerValue = TestValue.get();
+    const empty = jest.fn();
+    const result = jest.fn(() => resultCallbackResult);
+    const error = jest.fn();
+    const resultBox: ValueBox<any, any> = ResultBox.of(innerValue);
+    it('should call error callback with innerError', () => {
+      resultBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(result).toHaveBeenCalledWith(innerValue);
+    });
+    it('should return error callback return value', () => {
+      const res = resultBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(res).toBe(resultCallbackResult);
+    });
+    it('should not call another callback', () => {
+      resultBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(empty).not.toHaveBeenCalled();
+      expect(error).not.toHaveBeenCalled();
     });
   });
 });

@@ -41,4 +41,8 @@ export class ResultBox<VALUE>
   chain(fn: (v: VALUE) => any) {
     return fn(this.value);
   }
+
+  caseOf<RESULT>(obj: { result: (fn: VALUE) => RESULT }): RESULT {
+    return obj.result(this.value);
+  }
 }

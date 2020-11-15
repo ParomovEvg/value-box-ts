@@ -118,4 +118,39 @@ describe('ErrorBox', () => {
       expect(callback).not.toBeCalled();
     });
   });
+
+  describe('caseOf method', () => {
+    beforeEach(() => jest.clearAllMocks());
+    const errorCallbackResult = 'emptyCallbackResult';
+    const innerError = TestError.get();
+    const empty = jest.fn();
+    const result = jest.fn();
+    const error = jest.fn(() => errorCallbackResult);
+    const errorBox: ValueBox<any, any> = ErrorBox.of(innerError);
+    it('should call error callback with innerError', () => {
+      errorBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(error).toHaveBeenCalledWith(innerError);
+    });
+    it('should return error callback return value', () => {
+      const res = errorBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(res).toBe(errorCallbackResult);
+    });
+    it('should not call another callback', () => {
+      errorBox.caseOf({
+        error,
+        result,
+        empty,
+      });
+      expect(empty).not.toHaveBeenCalled();
+      expect(result).not.toHaveBeenCalled();
+    });
+  });
 });

@@ -16,4 +16,8 @@ export interface MaybeBox<VALUE> {
   smartMap<NEW_VALUE>(
     fn: (v: VALUE) => NEW_VALUE | undefined | null
   ): MaybeBox<NEW_VALUE>;
+  caseOf<RESULT, DEFAULT_RESULT>(obj: {
+    result: (fn: VALUE) => RESULT;
+    empty: () => DEFAULT_RESULT;
+  }): RESULT | DEFAULT_RESULT;
 }

@@ -30,4 +30,10 @@ export class ErrorBox<ERROR>
   chain() {
     return this;
   }
+
+  caseOf<ERROR_RESULT>(obj: {
+    error: (fn: ERROR) => ERROR_RESULT;
+  }): ERROR_RESULT {
+    return obj.error(this.error);
+  }
 }

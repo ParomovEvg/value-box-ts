@@ -22,4 +22,10 @@ export interface ValueBox<ERROR, VALUE> {
   smartMap<NEW_VALUE>(
     fn: (v: VALUE) => NEW_VALUE | undefined | null
   ): ValueBox<ERROR, NEW_VALUE>;
+
+  caseOf<RESULT, ERROR_RESULT, DEFAULT_RESULT>(obj: {
+    result: (fn: VALUE) => RESULT;
+    error: (fn: ERROR) => ERROR_RESULT;
+    empty: () => DEFAULT_RESULT;
+  }): RESULT | ERROR_RESULT | DEFAULT_RESULT;
 }
