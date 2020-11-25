@@ -58,4 +58,8 @@ export class ResultBox<VALUE>
     fn(this.value);
     return this;
   }
+
+  unwrap() {
+    return this.value;
+  }
 }

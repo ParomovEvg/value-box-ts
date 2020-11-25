@@ -193,4 +193,12 @@ describe('ErrorBox', () => {
       expect(res).toBe(value);
     });
   });
+
+  describe('unwrap method', () => {
+    it('should return inner error', () => {
+      const innerError = TestError.get();
+      const value: ValueBox<TestError, any> = ErrorBox.of(innerError);
+      expect(value.unwrap()).toBe(innerError);
+    });
+  });
 });

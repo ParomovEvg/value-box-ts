@@ -1,42 +1,23 @@
-import {
-  EmptyBox,
-  ErrorBox,
-  MaybeBox,
-  MayFailBox,
-  ResultBox,
-  ValueBox,
-} from '../..';
+import { ErrorBox, MayFailBox, ResultBox } from '../..';
 import {
   TestError1,
   TestValue1,
 } from '../../ValueBox/implementation/__test__/TestValue';
 import { mergeArrayOfBoxes } from './mergeArrayOfBoxes';
+import { getBoxArrays } from '../../test/testUtils/getBoxArrays';
 
 describe('mergeArrayOfBoxes', () => {
-  const testValuesArray = [TestValue1.get(), TestValue1.get()];
-  const testErrorsArray = [TestError1.get(), TestError1.get()];
-  const resultBoxArray = testValuesArray.map(v => ResultBox.of(v));
-  const errorBoxArray = testErrorsArray.map(v => ErrorBox.of(v));
-  const emptyBoxArray = [EmptyBox.get(), EmptyBox.get()];
-
-  const mixedArray: Array<ValueBox<TestError1, TestValue1>> = [
-    ...resultBoxArray,
-    ...errorBoxArray,
-    ...emptyBoxArray,
-  ];
-
-  const arrayWithErrors: Array<MayFailBox<TestError1, TestValue1>> = [
-    ...resultBoxArray,
-    ...errorBoxArray,
-  ];
-
-  const arrayWithEmptyBoxes: Array<MaybeBox<TestValue1>> = [
-    ...resultBoxArray,
-    ...emptyBoxArray,
-  ];
+  const {
+    resultBoxArray,
+    testErrorsArray,
+    testValuesArray,
+    arrayWithEmptyBoxes,
+    arrayWithErrors,
+    mixedArray,
+  } = getBoxArrays();
 
   test('types', () => {
-    const res1: ValueBox<TestError1, Array<TestValue1>> = mergeArrayOfBoxes(
+    const res1: MayFailBox<TestError1, Array<TestValue1>> = mergeArrayOfBoxes(
       mixedArray
     );
     expect(res1);

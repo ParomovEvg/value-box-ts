@@ -178,4 +178,11 @@ describe('EmptyBox', () => {
       expect(res).toBe(value);
     });
   });
+
+  describe('unwrap method', () => {
+    it('should return undefined', () => {
+      const emptyBox = EmptyBox.get();
+      expect(emptyBox.unwrap()).toBeUndefined();
+    });
+  });
 });

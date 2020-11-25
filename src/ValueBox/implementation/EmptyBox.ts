@@ -44,4 +44,8 @@ export class EmptyBox implements ValueBox<never, never>, MaybeBox<never> {
   onResult(): EmptyBox {
     return this;
   }
+
+  unwrap(){
+    return undefined
+  }
 }

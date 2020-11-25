@@ -49,4 +49,8 @@ export class ErrorBox<ERROR>
   onResult(): ErrorBox<ERROR> {
     return this;
   }
+
+  unwrap(){
+    return this.error
+  }
 }

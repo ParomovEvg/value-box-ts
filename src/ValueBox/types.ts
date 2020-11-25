@@ -34,3 +34,10 @@ export type ValueOf<T extends object> = T[keyof T];
 export type ArrayItem<T extends Array<unknown>> = T extends Array<infer F>
   ? F
   : never;
+export type ObjectOfBoxes = Record<string, UnknownBox>;
+export type ObjectOfMaybeBoxes = Record<string, UnknownMaybeBox>;
+export type ObjectOfMayFailBoxes = Record<string, UnknownMayFailBox>;
+export type ErrorFromBoxesObject<T extends ObjectOfBoxes> = ValueOf<{ [K in keyof T]: InferBoxError<T[K]> }>;
+export type ObjectOfBoxesValues<T extends ObjectOfBoxes> = {
+  [K in keyof T]: InferBoxValue<T[K]>;
+};

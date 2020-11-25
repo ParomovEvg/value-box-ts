@@ -1,23 +1,14 @@
-import { MaybeBox, MayFailBox, ResultBox, ValueBox } from '../..';
 import {
-  InferBoxError,
-  InferBoxValue,
-  UnknownBox,
-  UnknownMaybeBox,
-  UnknownMayFailBox,
-  ValueOf,
-} from '../../ValueBox/types';
-
-type ObjectOfBoxes = Record<string, UnknownBox>;
-type ObjectOfMaybeBoxes = Record<string, UnknownMaybeBox>;
-type ObjectOfMayFailBoxes = Record<string, UnknownMayFailBox>;
-
-type ErrorFromBoxesObject<T extends ObjectOfBoxes> = ValueOf<
-  { [K in keyof T]: InferBoxError<T[K]> }
->;
-type ObjectOfBoxesValues<T extends ObjectOfBoxes> = {
-  [K in keyof T]: InferBoxValue<T[K]>;
-};
+  ErrorFromBoxesObject,
+  MaybeBox,
+  MayFailBox,
+  ObjectOfBoxes,
+  ObjectOfBoxesValues,
+  ObjectOfMaybeBoxes,
+  ObjectOfMayFailBoxes,
+  ResultBox,
+  ValueBox,
+} from '../..';
 
 export function mergeObjectOfBoxes<T extends ObjectOfMayFailBoxes>(
   values: T

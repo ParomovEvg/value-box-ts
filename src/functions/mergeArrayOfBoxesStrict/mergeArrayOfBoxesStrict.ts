@@ -6,28 +6,31 @@ import {
   UnknownMayFailBox,
 } from '../../ValueBox/types';
 import {
+  isEmptyBox,
   isErrorBox,
   isResultBox,
+  MaybeBox,
   MayFailBox,
   ResultBox,
   ValueBox,
 } from '../..';
 
-export function mergeArrayOfBoxes<T extends UnknownMaybeBox>(
-  boxes: T[],
-): ResultBox<InferBoxValue<T>[]>;
-export function mergeArrayOfBoxes<T extends UnknownMayFailBox>(
-  boxes: T[],
+export function mergeArrayOfBoxesStrict<T extends UnknownMaybeBox>(
+  boxes: T[]
+): MaybeBox<InferBoxValue<T>[]>;
+export function mergeArrayOfBoxesStrict<T extends UnknownMayFailBox>(
+  boxes: T[]
 ): MayFailBox<InferBoxError<T>, InferBoxValue<T>[]>;
-export function mergeArrayOfBoxes<T extends UnknownBox>(
-  boxes: T[],
-): MayFailBox<InferBoxError<T>, InferBoxValue<T>[]>;
-export function mergeArrayOfBoxes(
-  boxes: ValueBox<any, any>[],
-) {
+export function mergeArrayOfBoxesStrict<T extends UnknownBox>(
+  boxes: T[]
+): ValueBox<InferBoxError<T>, InferBoxValue<T>[]>;
+export function mergeArrayOfBoxesStrict(boxes: ValueBox<any, any>[]): any {
   const result: any[] = [];
   for (const box of boxes) {
     if (isErrorBox(box)) {
+      return box;
+    }
+    if (isEmptyBox(box)) {
       return box;
     }
     if (isResultBox(box)) {
@@ -36,5 +39,3 @@ export function mergeArrayOfBoxes(
   }
   return ResultBox.of(result);
 }
-
-export type MergeArrayOfBoxes = typeof mergeArrayOfBoxes;

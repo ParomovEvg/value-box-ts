@@ -29,4 +29,6 @@ export interface MayFailBox<ERROR, VALUE> {
   onResult(fn: (v: VALUE) => void): MayFailBox<ERROR, VALUE>;
 
   onError(fn: (e: ERROR) => void): MayFailBox<ERROR, VALUE>;
+
+  unwrap(): ERROR | VALUE
 }

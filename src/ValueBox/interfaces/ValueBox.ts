@@ -32,4 +32,5 @@ export interface ValueBox<ERROR, VALUE> {
   onResult(fn: (v: VALUE) => void): ValueBox<ERROR, VALUE>;
   onEmpty(fn: () => void): ValueBox<ERROR, VALUE>;
   onError(fn: (e: ERROR) => void): ValueBox<ERROR, VALUE>;
+  unwrap(): VALUE | ERROR | undefined;
 }

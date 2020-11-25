@@ -22,5 +22,8 @@ export interface MaybeBox<VALUE> {
   }): RESULT | DEFAULT_RESULT;
 
   onResult(fn: (v: VALUE) => void): MaybeBox<VALUE>;
+
   onEmpty(fn: () => void): MaybeBox<VALUE>;
+
+  unwrap(): VALUE | undefined
 }

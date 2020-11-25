@@ -235,4 +235,12 @@ describe('ResultBox', () => {
       expect(res).toBe(value);
     });
   });
+
+  describe('unwrap method', () => {
+    it('should return inner value', () => {
+      const innerValue = TestValue.get();
+      const value: ValueBox<any, TestValue> = ResultBox.of(innerValue);
+      expect(value.unwrap()).toBe(innerValue);
+    });
+  });
 });
